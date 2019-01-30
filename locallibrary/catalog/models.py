@@ -75,7 +75,7 @@ class Book(models.Model):
     genre = models.ManyToManyField(Genre, help_text='Select a genre for this book')
 
     # Following the convention for author (while we can also use genre's convention, but it's more complex)
-    language = models.ForeignKey('Language', on_delete=models.SET_NULL, null=True)
+    language = models.ForeignKey('Language', on_delete=models.SET_NULL, null=True, help_text="Enter a language for this book")
     
     def __str__(self):
         """String for representing the Model object."""
@@ -84,6 +84,12 @@ class Book(models.Model):
     def get_absolute_url(self):
         """Returns the url to access a detail record for this book."""
         return reverse('book-detail', args=[str(self.id)])
+    
+    def display_genre(self):
+        """Create a string for the Genre. This is required to display genre in Admin."""
+        return ', '.join(genre.name for genre in self.genre.all()[:3])
+    
+    display_genre.short_description = 'Genre'
 
 class Language(models.Model):
     name = models.CharField(max_length=50, help_text="The formal name of the language")
