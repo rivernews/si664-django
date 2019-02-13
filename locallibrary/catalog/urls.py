@@ -8,10 +8,10 @@ urlpatterns = [
 
     # Author CRUD
     path('authors/', views.AuthorListView.as_view(), name='authors'),
-    path('authors/<int:pk>', views.AuthorDetailView.as_view(), name='author-detail'),
+    path('authors/<int:pk>', views  .AuthorDetailView.as_view(), name='author-detail'),
     path('author/create/', views.AuthorCreate.as_view(), name='author-create'),
-    path('author/<int:pk>/update/', views.AuthorUpdate.as_view(), name='author-update'),
-    path('author/<int:pk>/delete/', views.AuthorDelete.as_view(), name='author-delete'),
+    path('authors/<int:pk>/update/', views.AuthorUpdate.as_view(), name='author-update'),
+    path('authors/<int:pk>/delete/', views.AuthorDelete.as_view(), name='author-delete'),
 
     path('mybooks/', views.LoanedBooksByUserListView.as_view(), name='my-borrowed'),
     path('librarian/borrowed/', views.LoanedBooksListView.as_view(), name='all-borrowed'),
