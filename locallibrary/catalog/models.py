@@ -28,6 +28,7 @@ class Author(models.Model):
     
     class Meta:
         ordering = ['last_name']
+        permissions = (("can_edit_delete_author", "Can do CRUD to any author"),) 
 
 class BookInstance(models.Model):
     """Model representing a specific copy of a book (i.e. that can be borrowed from the library)."""
