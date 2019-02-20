@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Auto List</h1>
+  <p>
+      <a href="{% url 'auto-create' %}">Add an auto</a>
+  </p>
+  {% if auto_list %}
+  <ul>
+    {% for auto in auto_list %}
+      <li>
+        <a href="{{ auto.get_absolute_url }}">{{ auto.nickname }}</a> ({{auto.make}}) (
+            <a href="{% url 'auto-update' pk=auto.id %}">Update</a> |
+            <a href="{% url 'auto-delete' pk=auto.id %}">delete</a>
+        )
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no autos.</p>
+  {% endif %}       
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Model Name: {{ auto.nickname }}</h1>
+  <p>
+      <a href="{% url 'auto-update' pk=auto.id %}">Update</a> | <a href="{% url 'auto-delete' pk=auto.id %}">Delete</a>
+  </p>
+  <p><strong>Make:</strong> <a href="{{ auto.make.get_absolute_url }}">{{ auto.make }}</a></p> <!-- author detail link not yet defined -->
+  <p><strong>Mile Age:</strong> {{ auto.mileage }}</p>
+  <p><strong>Comments:</strong> {{ auto.comments }}</p>
+{% endblock %}

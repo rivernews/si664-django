@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Make List</h1>
+  <p>
+      <a href="{% url 'make-create' %}">Add a make</a>
+  </p>
+  {% if make_list %}
+  <ul>
+    {% for make in make_list %}
+      <li>
+        <a href="{{ make.get_absolute_url }}">{{ make.name }}</a> (
+            <a href="{% url 'make-update' pk=make.id %}">Update</a> |
+            <a href="{% url 'make-delete' pk=make.id %}">delete</a>
+        )
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no makes.</p>
+  {% endif %}       
+{% endblock %}

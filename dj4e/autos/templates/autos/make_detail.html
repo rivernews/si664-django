@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Make Name: {{ make.name }}</h1>
+{% if make.auto_set.all %}
+<h2>Models:</h2>
+<p>
+    <ul>
+        {% for auto in make.auto_set.all %}
+        <li>
+            <a href="{% url 'auto' pk=auto.id %}">{{auto.nickname}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</p>
+{% else %}
+<p>
+    No this make's auto yet.
+</p>
+{% endif %}
+{% endblock %}
