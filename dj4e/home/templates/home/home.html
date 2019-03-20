@@ -1,15 +1,9 @@
 {% extends 'base.html' %}
 
-{% block title %}
-Title Blah
-{% endblock %}
-
 {% block content %}
-<h1>Hello World hello world ...</h1>
-<p>
-    cats, cat, cat, love'em
-</p>
-<p>
-    Some pic about them!
-</p>
+<ul>
+    <li><a href="{% url 'autos-index' %}">Autos CRUD</a></li>
+    <li><a href="{% url 'cats-index' %}">Cats CRUD</a></li>
+    <li><a href="{% url 'citys-index' %}">Cities CRUD</a></li>
+</ul>
 {% endblock %}

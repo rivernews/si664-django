@@ -1,0 +1,11 @@
+{% extends "base-city.html" %}
+
+{% block appContent %}
+  <h1>City Nickname: {{ city.nickname }}</h1>
+  <p>
+      <a href="{% url 'city-update' pk=city.id %}">Update</a> | <a href="{% url 'city-delete' pk=city.id %}">Delete</a>
+  </p>
+  <p><strong>State:</strong> <a href="{{ city.state.get_absolute_url }}">{{ city.state }}</a></p>
+  <p><strong>Slogan:</strong> {{ city.slogan }}</p>
+  <p><strong>Population:</strong> {{ city.population }}</p>
+{% endblock %}

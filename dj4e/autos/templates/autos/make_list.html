@@ -1,6 +1,6 @@
-{% extends "base.html" %}
+{% extends "base-auto.html" %}
 
-{% block content %}
+{% block appContent %}
   <h1>Make List</h1>
   <p>
       <a href="{% url 'make-create' %}">Add a make</a>
@@ -18,5 +18,5 @@
   </ul>
   {% else %}
     <p>There are no makes.</p>
-  {% endif %}       
+  {% endif %}
 {% endblock %}

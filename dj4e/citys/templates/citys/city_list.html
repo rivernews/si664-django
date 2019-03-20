@@ -1,0 +1,22 @@
+{% extends "base-city.html" %}
+
+{% block appContent %}
+  <h1>City List</h1>
+  <p>
+      <a href="{% url 'city-create' %}">Add an city</a>
+  </p>
+  {% if object_list %}
+  <ul>
+    {% for city in object_list %}
+      <li>
+        <a href="{{ city.get_absolute_url }}">{{ city }}</a> ({{city.state}}) (
+            <a href="{% url 'city-update' pk=city.id %}">Update</a> |
+            <a href="{% url 'city-delete' pk=city.id %}">delete</a>
+        )
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There is no city.</p>
+  {% endif %}       
+{% endblock %}

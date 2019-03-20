@@ -1,0 +1,9 @@
+{% extends "base-cat.html" %}
+
+{% block appContent %}
+  <h1>Breed Name: {{ breed.name }}</h1>
+  <p>
+      <a href="{% url 'breed-update' pk=breed.id %}">Update</a> | <a href="{% url 'breed-delete' pk=breed.id %}">Delete</a>
+  </p>
+  <p><strong>Name:</strong> <a href="{{ breed.get_absolute_url }}">{{ breed.name }}</a></p>
+{% endblock %}

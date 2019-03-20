@@ -1,0 +1,22 @@
+{% extends "base-cat.html" %}
+
+{% block appContent %}
+  <h1>Cat List</h1>
+  <p>
+      <a href="{% url 'cat-create' %}">Add an cat</a>
+  </p>
+  {% if object_list %}
+  <ul>
+    {% for cat in object_list %}
+      <li>
+        <a href="{{ cat.get_absolute_url }}">{{ cat }}</a> ({{cat.breed}}) (
+            <a href="{% url 'cat-update' pk=cat.id %}">Update</a> |
+            <a href="{% url 'cat-delete' pk=cat.id %}">delete</a>
+        )
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There is no cat.</p>
+  {% endif %}       
+{% endblock %}

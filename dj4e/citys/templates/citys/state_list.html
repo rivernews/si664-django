@@ -1,0 +1,22 @@
+{% extends "base-city.html" %}
+
+{% block appContent %}
+  <h1>State List</h1>
+  <p>
+      <a href="{% url 'state-create' %}">Add a state</a>
+  </p>
+  {% if state_list %}
+  <ul>
+    {% for state in state_list %}
+      <li>
+        <a href="{{ state.get_absolute_url }}">{{ state }}</a> (
+            <a href="{% url 'state-update' pk=state.id %}">Update</a> |
+            <a href="{% url 'state-delete' pk=state.id %}">delete</a>
+        )
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There is no state.</p>
+  {% endif %}       
+{% endblock %}

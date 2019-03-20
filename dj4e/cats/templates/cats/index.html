@@ -1,0 +1,17 @@
+{% extends "base-cat.html" %}
+
+{% block appContent %}
+<h1>Welcome to the cat industry</h1>
+<p>
+    Feeling creative? You can:
+    <ul>
+        <li>
+            <a href="{% url 'cat-create' %}">Add a cat</a>
+        </li>
+        <li>
+            <a href="{% url 'breed-create' %}">Add a breed</a>
+        </li>
+    </ul>
+    Or, view at our rich database.
+</p>
+{% endblock %}

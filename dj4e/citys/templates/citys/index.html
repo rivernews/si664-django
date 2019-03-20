@@ -1,0 +1,17 @@
+{% extends "base-city.html" %}
+
+{% block appContent %}
+<h1>Welcome to the city info hub</h1>
+<p>
+    Feeling creative? You can:
+    <ul>
+        <li>
+            <a href="{% url 'city-create' %}">Add a city</a>
+        </li>
+        <li>
+            <a href="{% url 'state-create' %}">Add a state</a>
+        </li>
+    </ul>
+    Or, view at our rich database.
+</p>
+{% endblock %}

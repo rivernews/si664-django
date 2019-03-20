@@ -1,6 +1,6 @@
-{% extends "base.html" %}
+{% extends "base-auto.html" %}
 
-{% block content %}
+{% block appContent %}
   <h1>Model Name: {{ auto.nickname }}</h1>
   <p>
       <a href="{% url 'auto-update' pk=auto.id %}">Update</a> | <a href="{% url 'auto-delete' pk=auto.id %}">Delete</a>

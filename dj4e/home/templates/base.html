@@ -4,7 +4,9 @@
 <head>
     <meta charset="utf-8" />
     <!-- <meta name="wa4e" content="e2c0be24560d78c5e599c2a9c9d0bbd2"> -->
+    <!-- <meta name="wa4e" content="e2c0be24560d78c5e599c2a9c9d0bbd2"> -->
     <meta name="wa4e" content="e2c0be24560d78c5e599c2a9c9d0bbd2"> 
+    
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,68 +30,8 @@
 </head>
 
 <body>
-    <div class="col-sm-2">
-        <div class="sidebar-nav">
-            <h4>Links</h4>
-            <ul>
-                <li>
-                    <a href="{% url 'autos-index' %}">Auto</a>
-                </li>
-                <li>
-                    <a href="{% url 'autos' %}">View autos</a>
-                </li>
-                <li>
-                    <a href="{% url 'makes' %}">View makes</a>
-                </li>
-                {% if not user.is_authenticated %}
-                <li>
-                    <a href="{% url 'login' %}?next={{request.path}}">Login</a>
-                </li>
-                {% else %}
-                <li>
-                    Hi {{ user }}, <a href="{% url 'logout' %}?next={{request.path}}">Logout</a>
-                </li>
-                {% endif %}
-            </ul>
-        </div>
-    </div>
-    <div class="col-sm-10">
-        <div class="container">
-            {% block content %}
-            {% endblock %}
-
-            {% block pagination %}
-            {% if is_paginated %}
-            <div class="pagination">
-                <div class="page-links">
-                    {% if page_obj.has_previous %}
-                    <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
-                    {% endif %}
-                    |
-                    {% if page_obj.has_next %}
-                    <a href="{{ request.path }}?page={{ page_obj.next_page_number }}"> next</a>
-                    {% endif %}
-
-                    <span class="page-current">
-                        <p>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}. </p>
-                    </span>
-                </div>
-            </div>
-            {% endif %}
-            {% endblock %}
-        </div>
-    </div>
-    <footer>
-        <p>
-            <ul>
-                <li><a href="/admin">Admin</a></li>
-                <li><a href="{% url 'index' %}">Back to home</a></li>
-            </ul>
-        </p>
-    </footer>
-
-
-
+{% block content %}
+{% endblock %}
 </body>
 
 </html>

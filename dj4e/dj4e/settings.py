@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     'home.apps.HomeConfig',
     'autos.apps.AutosConfig',
+    'cats.apps.CatsConfig',
+    'citys.apps.CitysConfig',
 ]
 
 MIDDLEWARE = [
