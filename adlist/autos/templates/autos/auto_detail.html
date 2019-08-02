@@ -1,0 +1,49 @@
+{% extends "autos/base_menu.html" %}
+{% load humanize %} <!-- https://docs.djangoproject.com/en/2.1/ref/contrib/humanize -->
+{% load crispy_forms_tags %}
+
+{% block content %}
+<span style="float: right;">
+({{ auto.updated_at|naturaltime }})
+{% if auto.owner == user %}
+<a href="{% url 'auto_update' auto.id %}"><i class="fa fa-pencil"></i></a>
+<a href="{% url 'auto_delete' auto.id %}"><i class="fa fa-trash"></i></a>
+{% endif %}
+</span>
+<h1>{{ auto.name }}</h1>
+{% if auto.content_type %}
+<img style="float:right; max-width:50%;" src="{% url 'auto_picture' auto.id %}">
+{% endif %}
+<p>
+{{ auto.detail }}
+</p>
+
+<p>
+</p>
+
+<!-- comment form under -->
+{% if user.is_authenticated %}
+<br clear="all"/>
+<p>
+<form method="post" action="{% url 'comment_create' auto.id %}">
+    {% csrf_token %}
+    {{ comment_form|crispy }}
+<input type="submit" value="Submit">
+</form>
+</p>
+{% endif %}
+
+<!-- show comment list -->
+{% for comment in comments %}
+<p> {{ comment.text }} 
+({{ comment.updated_at|naturaltime }})
+{% if user == comment.owner %}
+<a href="{% url 'comment_delete' comment.id %}"><i class="fa fa-trash"></i></a>
+{% endif %}
+</p>
+{% endfor %}
+
+<p>
+<a href="{% url 'autos' %}">All autos</a>
+</p>
+{% endblock %}
